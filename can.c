@@ -2,8 +2,6 @@
 #include <xc.h>
 #include <stdint.h>
 
-//#include "mstimer.h"
-
 // ECAN bitrate define, choose only ONE rate
 #define F_ECAN_100    1       // 1 sets ECAN module for 100kbps
 #define F_ECAN_125    0       // 1 sets ECAN module for 125kbps
@@ -27,18 +25,18 @@ unsigned char temp_D7;      //Data byte 7
 
 void CanInterfaceOn()
 {
-    PORTBbits.RB4 = 0;
+    LATBbits.LB4 = 0;
 }
 void CanInterfaceStandby()
 {
-    PORTBbits.RB4 = 1;
+    LATBbits.LB4 = 1;
 }
 
 void CanInit()
 {
     //MCP2551 RS pin: high is standby, low is high speed)
     TRISBbits.TRISB4 = 0; //RB4 (pin 25)
-    PORTBbits.RB4 = 0;    //Turn on CAN
+    LATBbits.LB4 = 0;    //Turn on CAN
     
     // Place CAN module in configuration mode, see CANCON register data
     CANCON = 0x80;    //REQOP bits <2:0> = 0b100
