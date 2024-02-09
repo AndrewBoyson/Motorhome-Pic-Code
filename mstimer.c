@@ -8,6 +8,9 @@
 uint32_t _msCount = 0;     //This is incremented by interrupt. Do not use directly
 uint32_t MsTimerCount = 0; //This is interrupt protected copied from _msCount every scan
 
+uint32_t _lastCount = 0;
+ int16_t MsTimerScanTime = 0;
+
 bool MsTimerAbsolute(uint32_t untilMs)                            //This uses signed comparison so it is limited to 24 days
 {
     return (int)(MsTimerCount - untilMs) > 0;
@@ -37,4 +40,11 @@ void MsTimerMain()
     di();
         MsTimerCount = _msCount;
     ei();
+    
+    int16_t scanTime = (int16_t)(MsTimerCount - _lastCount);
+    if (scanTime > MsTimerScanTime) MsTimerScanTime++;
+    if (scanTime < MsTimerScanTime) MsTimerScanTime--;
+    
+    _lastCount = MsTimerCount;
+    
 }
