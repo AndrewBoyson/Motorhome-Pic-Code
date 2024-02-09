@@ -8,7 +8,7 @@ uint64_t OneWireRom    [MAX_ROMS];
 uint32_t OneWireRomMs  [MAX_ROMS];
  int16_t OneWireRomData[MAX_ROMS];
  
-#define STALE_MS 30000
+#define STALE_MS 60000
 
  int16_t OneWireRomDataFromCode(uint64_t code)
  {
