@@ -1,6 +1,13 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include <string.h>
+
+#include "can.h"
+#include "mstimer.h"
+
+#define  MIN_MS  1000 //Minimum time between transmissions
+#define  MAX_MS 10000 //Maximum time before retransmission
 
 // ECAN bitrate define, choose only ONE rate
 #define F_ECAN_100    1       // 1 sets ECAN module for 100kbps
@@ -222,4 +229,24 @@ static void receive(void)
 void CanMain()
 {
     receive();
+}
+
+void CanTransmitOnChange(struct CanTransmitState *pState, uint16_t node, uint16_t id, uint8_t length, void *pValue)
+{
+    char maxMsHasElapsed = MsTimerRelative(pState->msSent, MAX_MS + id);
+    char minMsHasElapsed = MsTimerRelative(pState->msSent, MIN_MS     );
+    char valueHasChanged = memcmp(&pState->lastValue, pValue, length) != 0;
+    
+    if (valueHasChanged || maxMsHasElapsed) pState->send = 1;
+    
+    if (pState->send && minMsHasElapsed)
+    {
+        char failed = CanTransmit(node + id, length, pValue);
+        pState->msSent = MsTimerCount;
+        if (!failed)
+        {
+            pState->send = 0;
+            memcpy(&pState->lastValue, pValue, length);
+        }
+    }
 }
