@@ -5,12 +5,12 @@
 #define CAN_ID_BATTERY              0x100
 #define CAN_ID_COUNTED_AMP_SECONDS   0x00
 #define CAN_ID_MA                    0x01
-#define CAN_ID_OUTPUT_SETPOINT       0x02
+#define CAN_ID_OUTPUT_TARGET         0x02
 #define CAN_ID_OUTPUT_STATE          0x03
 #define CAN_ID_CHARGE_ENABLED        0x04
 #define CAN_ID_DISCHARGE_ENABLED     0x05
 #define CAN_ID_TEMPERATURE_8BFDP     0x06
-#define CAN_ID_HEATER_SET_POINT      0x07
+#define CAN_ID_HEATER_TARGET         0x07
 #define CAN_ID_HEATER_OUTPUT         0x08
 #define CAN_ID_VOLTAGE               0x09
 #define CAN_ID_AGING_AS_PER_HOUR     0x0A
