@@ -1,12 +1,12 @@
 
 #include "1-wire-interface.h"
-#include "1-wire-roms.h"
+#include "1-wire-device.h"
+#include "1-wire-crc.h"
 
 //Search state
 static int LastDiscrepancy;
 static int LastFamilyDiscrepancy;
 static char LastDeviceFlag;
-static int romCount;
 static unsigned char crc8;
 
 //Inner loop variables
@@ -50,7 +50,6 @@ int OneWireOpSearch() //returns 0 to continue, -1 on error, +1 if finished
             LastDiscrepancy = 0;
             LastDeviceFlag = 0;
             LastFamilyDiscrepancy = 0;
-            romCount = 0;
             _todo++;
             return 0;
         case TODO_NEXT:
@@ -134,17 +133,23 @@ int OneWireOpSearch() //returns 0 to continue, -1 on error, +1 if finished
             return 0;
         case TODO_LOOP_END:
             //store the rom
-            for (int i = 0; i < 8; i++)
             {
-                OneWireRom[romCount] <<= 8;
-                OneWireRom[romCount] |= Rom[i];
+                OneWireCrcReset();
+                uint64_t id = 0;
+                for (int i = 0; i < 8; i++)
+                {
+                    id <<= 8;
+                    id |= Rom[i];    
+                    OneWireCrcAddByte(Rom[i]);
+                }
+                char crcOk = OneWireCrcGetResult() == 0;
+                if (crcOk) OneWireDeviceAddIdFromSearch(id);
             }
             LastDiscrepancy = last_zero;
             if (LastDiscrepancy == 0) LastDeviceFlag = 1;
-            romCount++;
-            if (romCount >= MAX_ROMS || LastDeviceFlag)
+            if (LastDeviceFlag)
             {
-                for (int i = romCount; i < MAX_ROMS; i++) OneWireRom[i] = 0;
+                OneWireDeviceHandleEndOfScan();
                 _todo++;
                 return 1;
             }
