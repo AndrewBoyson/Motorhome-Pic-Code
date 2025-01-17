@@ -62,8 +62,9 @@
 #define CAN_ID_FILL                  0x01
 #define CAN_ID_DRAIN                 0x02
 #define CAN_ID_INVERTER              0x03
-#define CAN_ID_D_PLUS                0x04
-#define CAN_ID_EHU                   0x05
-#define CAN_ID_PUMP_MIN_LITRES       0x06
-#define CAN_ID_PUMP_DPLUS_LITRES     0x07
-#define CAN_ID_DRAIN_MAX_LITRES      0x08
+#define CAN_ID_LPG_HEATER            0x04
+#define CAN_ID_D_PLUS                0x05
+#define CAN_ID_EHU                   0x06
+#define CAN_ID_PUMP_MIN_LITRES       0x07
+#define CAN_ID_PUMP_DPLUS_LITRES     0x08
+#define CAN_ID_DRAIN_MAX_LITRES      0x09
