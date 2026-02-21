@@ -5,7 +5,7 @@
 #define CAN_ID_BATTERY              0x100
 #define CAN_ID_COUNTED_AMP_SECONDS   0x00
 #define CAN_ID_MA                    0x01
-#define CAN_ID_OUTPUT_TARGET         0x02
+#define CAN_ID_OUTPUT_TARGET_SOC     0x02
 #define CAN_ID_OUTPUT_STATE          0x03
 #define CAN_ID_CHARGE_ENABLED        0x04
 #define CAN_ID_DISCHARGE_ENABLED     0x05
@@ -13,9 +13,13 @@
 #define CAN_ID_HEATER_TARGET         0x07
 #define CAN_ID_HEATER_OUTPUT         0x08
 #define CAN_ID_VOLTAGE               0x09
-#define CAN_ID_AGING_AS_PER_HOUR     0x0A
+#define CAN_ID_CURRENT_OFFSET_MA     0x0A
 #define CAN_ID_HEATER_PROPORTIONAL   0x0B
 #define CAN_ID_HEATER_INTEGRAL       0x0C
+#define CAN_ID_OUTPUT_TARGET_MODE    0x0D
+#define CAN_ID_OUTPUT_TARGET_MV      0x0E
+#define CAN_ID_MS_AT_REST            0x0F
+#define CAN_ID_VOLTAGE_SETTLE_MINS   0x10
 
 #define CAN_ID_TANK                 0x200
 #define CAN_ID_FRESH_TEMPERATURE     0x00
