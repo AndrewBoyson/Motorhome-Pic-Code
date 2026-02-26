@@ -20,6 +20,7 @@
 #define CAN_ID_OUTPUT_TARGET_MV      0x0E
 #define CAN_ID_MS_AT_REST            0x0F
 #define CAN_ID_VOLTAGE_SETTLE_MINS   0x10
+#define CAN_ID_VOLTAGE_REBOUND_MV    0x11
 
 #define CAN_ID_TANK                 0x200
 #define CAN_ID_FRESH_TEMPERATURE     0x00
