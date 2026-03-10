@@ -21,6 +21,8 @@
 #define CAN_ID_MS_AT_REST            0x0F
 #define CAN_ID_VOLTAGE_SETTLE_MINS   0x10
 #define CAN_ID_VOLTAGE_REBOUND_MV    0x11
+#define CAN_ID_COUNT_POS_PULSES      0x12
+#define CAN_ID_COUNT_NEG_PULSES      0x13
 
 #define CAN_ID_TANK                 0x200
 #define CAN_ID_FRESH_TEMPERATURE     0x00

@@ -4,7 +4,8 @@
 For this to work during a device programming you must protect the eeprom:
 Project properties>PicKit3>Memories to program>Preserve EEPROM memory 0-3FF.
 
-Parameter D122 section 28.3 typical erase/write cycle time = 4ms so saving 64 byte string will take 256ms.
+Parameter D122 typical erase/write cycle time = 4ms so saving 64 byte string will take 256ms.
+Parameter D120 typical byte endurance = 1,000,000 so for a ten year lifetime don't save more than once per 5 minutes
 */
 
 char EepromReadChar(unsigned char eadr)
