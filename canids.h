@@ -25,6 +25,7 @@
 #define CAN_ID_COUNT_NEG_PULSES        0x13
 #define CAN_ID_MANAGE_DIFFERENCE_MAS   0x14
 #define CAN_ID_MANAGE_PULSE_ADJUST_MAS 0x15
+#define CAN_ID_CURRENT_SETTLE_MINS     0x16
 
 #define CAN_ID_TANK                   0x200
 #define CAN_ID_FRESH_TEMPERATURE       0x00
