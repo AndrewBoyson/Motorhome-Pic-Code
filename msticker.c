@@ -34,7 +34,7 @@ static void saveLength()
 static void adjustLength(uint16_t newLength)
 {
     setLength(newLength);
-    if (MsTimerCount > _msSaved + STORE_INTERVAL_MS) saveLength();
+    if (MsTimerCount - _msSaved > STORE_INTERVAL_MS) saveLength();
 }
 
 int32_t MsTickerGetExtMinusIntMs()
