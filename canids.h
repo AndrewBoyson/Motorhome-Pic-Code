@@ -82,3 +82,6 @@
 #define CAN_ID_PUMP_MIN_LITRES         0x07
 #define CAN_ID_PUMP_DPLUS_LITRES       0x08
 #define CAN_ID_DRAIN_MAX_LITRES        0x09
+#define CAN_ID_FRESH_HEATER            0x0A
+#define CAN_ID_GREY_HEATER             0x0B
+
